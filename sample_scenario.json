@@ -1,0 +1,14 @@
+{
+  "disruption_type": "delay",
+  "ticket_price_eur": 120.0,
+  "arrival_delay_minutes": 90,
+  "journey_within_eu_or_operator_eu": true,
+  "informed_before_purchase": false,
+  "delay_due_to_passenger": false,
+  "exceptional_circumstances": false,
+  "accepted_refund_or_reroute": false,
+  "passenger_description": "pasajero/a de ejemplo",
+  "operator": "Operador Ferroviario de Ejemplo",
+  "train_number": "EC 123",
+  "travel_date": "2026-08-20"
+}

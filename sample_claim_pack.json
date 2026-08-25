@@ -1,0 +1,39 @@
+{
+  "scenario": {
+    "disruption_type": "delay",
+    "ticket_price_eur": 120.0,
+    "arrival_delay_minutes": 90,
+    "journey_within_eu_or_operator_eu": true,
+    "informed_before_purchase": false,
+    "delay_due_to_passenger": false,
+    "exceptional_circumstances": false,
+    "accepted_refund_or_reroute": false,
+    "passenger_description": "pasajero/a de ejemplo",
+    "operator": "Operador Ferroviario de Ejemplo",
+    "train_number": "EC 123",
+    "travel_date": "2026-08-20"
+  },
+  "assessment": {
+    "eligible": true,
+    "estimated_reimbursement_eur": 30.0,
+    "reimbursement_rate": 0.25,
+    "status": "posible_reclamacion",
+    "reasons": [
+      "Retraso de llegada 90 min -> reembolso orientativo mínimo del 25% del billete.",
+      "Precio del billete 120.00 € -> estimación orientativa 30.00 €."
+    ],
+    "required_user_checks": [
+      "Verificar que el trayecto/operador cae bajo normas UE y si aplica alguna exención nacional o de servicio.",
+      "Conservar billete, reserva, justificante de precio, hora prevista/real y comunicaciones del operador.",
+      "Comprobar el procedimiento y plazo de reclamación del operador/autoridad nacional competente.",
+      "Confirmar si hubo circunstancias excepcionales, información previa o culpa del pasajero que excluyan compensación."
+    ],
+    "disclaimer": "Estimación informativa basada en reglas públicas; no es asesoría legal y no garantiza compensación."
+  },
+  "official_sources": [
+    "https://europa.eu/youreurope/citizens/travel/passenger-rights/rail/index_en.htm",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021R0782",
+    "https://transport.ec.europa.eu/transport-themes/passenger-rights/rail-passenger-rights_en"
+  ],
+  "claim_letter_draft": "Asunto: Reclamación informativa por retraso/cancelación del EC 123\n\nA la atención de Operador Ferroviario de Ejemplo:\n\nSoy pasajero/a de ejemplo. En relación con el EC 123 del 2026-08-20, solicito revisar los derechos aplicables por delay conforme a la normativa pública de derechos de pasajeros ferroviarios.\n\nDatos orientativos:\n- Precio del billete: 120.00 €\n- Retraso de llegada: 90 minutos\n- Estimación orientativa generada por la herramienta: 30.00 € si la reclamación resulta aplicable y aceptada.\n\nAdjuntaría, en una reclamación real, copia de billete/reserva, justificante de pago, hora prevista/real de llegada y comunicaciones del operador. Esta carta es un borrador editable y debe verificarse antes de enviarse.\n\nAtentamente,\n[Nombre del pasajero]\n"
+}

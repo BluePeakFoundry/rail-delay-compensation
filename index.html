@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora orientativa de compensación ferroviaria UE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <p class="badge">Cálculo orientativo · Sin registro · Sin almacenamiento</p>
+    <h1>Calculadora orientativa de compensación ferroviaria UE</h1>
+    <p>Estima de forma educativa si un retraso ferroviario podría activar un reembolso mínimo del 25% o 50% del billete. No es asesoría legal, no envía reclamaciones y no almacena datos.</p>
+    <section class="card">
+      <label>Precio del billete (€)<input id="ticket" type="number" min="0" step="0.01" value="120"></label>
+      <label>Retraso de llegada (minutos)<input id="delay" type="number" min="0" step="1" value="90"></label>
+      <label><input id="covered" type="checkbox" checked> Trayecto/operador dentro del alcance UE orientativo</label>
+      <label><input id="exceptional" type="checkbox"> Posibles circunstancias excepcionales</label>
+      <button id="calculate">Calcular borrador</button>
+    </section>
+    <section class="card result" id="result" aria-live="polite"></section>
+    <section class="card warning">
+      <h2>Límites</h2>
+      <ul>
+        <li>Verifica siempre fuente oficial, operador, exenciones, plazo y documentación.</li>
+        <li>El resultado es orientativo y no garantiza compensación.</li>
+        <li>Consulta siempre las condiciones y el procedimiento del operador.</li>
+      </ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
