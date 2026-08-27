@@ -17,6 +17,7 @@ fieldset { border: 1px solid #475569; border-radius: 14px; padding: 12px 14px; m
 .check input { margin-top: 3px; }
 button { background: #38bdf8; border: 0; border-radius: 999px; padding: 12px 20px; font-weight: 850; color: #082f49; cursor: pointer; }
 button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid #facc15; outline-offset: 3px; }
+.tools-link { color: #7dd3fc; font-weight: 800; }
 .result { border-color: #38bdf8; }
 .warning { color: #dbeafe; border-color: #f59e0b; }
 details { border-top: 1px solid #334155; padding: 12px 0; }
