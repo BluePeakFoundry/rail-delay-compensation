@@ -1,30 +1,32 @@
-# EU Rail Delay Compensation Pack
+# EU Rail Delay Compensation Calculator
 
-Activo local de coste cero para generar una estimación educativa de compensación/reembolso por retraso ferroviario bajo derechos de pasajeros UE.
+Static, privacy-preserving calculator for preparing an educational estimate of minimum EU rail delay reimbursement rates and an editable draft message.
 
-## Qué hace
+## What it does
 
-- Calcula 25% del precio del billete para retrasos de llegada de 60 a 119 minutos.
-- Calcula 50% para retrasos de 120 minutos o más.
-- Genera JSON, Markdown y una carta editable.
+- Estimates 25% of the ticket price for arrival delays from 60 to 119 minutes.
+- Estimates 50% for arrival delays of 120 minutes or more.
+- Generates local JSON, Markdown and browser draft text for review.
+- Runs as a static page with no registration, analytics, storage or remote runtime resources.
 
-## Qué no hace
+## What it does not do
 
-- No es asesoría legal.
-- No publica, cobra, contacta operadores ni envía reclamaciones.
-- No recopila datos reales ni usa recursos remotos.
-- No garantiza que una reclamación sea aceptada.
+- It is not legal advice.
+- It does not submit claims, contact operators, collect personal data or guarantee payment.
+- Users must verify the applicable operator procedure, conditions, exemptions, documentation and deadlines.
 
-## Fuentes públicas a verificar antes de uso real
+## Public sources to verify before real use
 
-- Your Europe Rail passenger rights
-- Regulation (EU) 2021/782
-- European Commission rail passenger rights
+- Your Europe rail passenger rights.
+- Regulation (EU) 2021/782.
+- European Commission rail passenger rights.
 
-## Pruebas
+## Local checks
 
 ```bash
-python3 -m unittest -v
+python3 -m unittest -q
 python3 claim_pack.py --scenario sample_scenario.json --json sample_claim_pack.json --markdown sample_claim_pack.md
 python3 validate_pack.py
+python3 validate_public_site.py
+node --check app.js
 ```

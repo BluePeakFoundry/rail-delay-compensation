@@ -3,28 +3,107 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calculadora orientativa de compensación ferroviaria UE</title>
+  <title>Calculadora de compensación por retraso ferroviario en la UE</title>
+  <meta name="description" content="Calcula una estimación educativa del reembolso mínimo por retraso ferroviario en la UE y prepara una carta editable para revisar con el operador.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://bluepeakfoundry.github.io/rail-delay-compensation/">
+  <meta property="og:title" content="Calculadora de compensación por retraso ferroviario en la UE">
+  <meta property="og:description" content="Estimación educativa del reembolso mínimo por retraso ferroviario en la UE, sin registro ni almacenamiento.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bluepeakfoundry.github.io/rail-delay-compensation/">
+  <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "EU Rail Delay Compensation Calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+        "description": "Educational calculator for estimating minimum EU rail delay reimbursement rates."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Cuándo puede existir compensación por retraso ferroviario en la UE?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Como orientación general, un retraso de llegada de 60 a 119 minutos puede activar un mínimo del 25% del billete y 120 minutos o más puede activar un mínimo del 50%, sujeto a condiciones, exenciones y revisión del operador."}
+          },
+          {
+            "@type": "Question",
+            "name": "Esta herramienta envía una reclamación?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. Sólo genera una estimación educativa y texto editable. La persona usuaria debe verificar las reglas oficiales y usar el procedimiento del operador."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#calculator">Saltar a la calculadora</a>
   <main>
-    <p class="badge">Cálculo orientativo · Sin registro · Sin almacenamiento</p>
-    <h1>Calculadora orientativa de compensación ferroviaria UE</h1>
-    <p>Estima de forma educativa si un retraso ferroviario podría activar un reembolso mínimo del 25% o 50% del billete. No es asesoría legal, no envía reclamaciones y no almacena datos.</p>
-    <section class="card">
-      <label>Precio del billete (€)<input id="ticket" type="number" min="0" step="0.01" value="120"></label>
-      <label>Retraso de llegada (minutos)<input id="delay" type="number" min="0" step="1" value="90"></label>
-      <label><input id="covered" type="checkbox" checked> Trayecto/operador dentro del alcance UE orientativo</label>
-      <label><input id="exceptional" type="checkbox"> Posibles circunstancias excepcionales</label>
-      <button id="calculate">Calcular borrador</button>
+    <header class="hero">
+      <p class="badge">Cálculo orientativo · Sin registro · Sin almacenamiento</p>
+      <h1>Calculadora de compensación por retraso ferroviario en la UE</h1>
+      <p class="lede">Estima si un retraso de llegada podría activar un reembolso mínimo del 25% o 50% del billete y copia una carta editable para revisar antes de contactar al operador.</p>
+    </header>
+
+    <section class="card" id="calculator" aria-labelledby="calculator-title">
+      <h2 id="calculator-title">Datos del viaje</h2>
+      <p class="hint">Usa importes ficticios si sólo quieres probar la herramienta. No se guarda ni se envía ningún dato.</p>
+      <div class="field">
+        <label for="ticket">Precio del billete (€)</label>
+        <input id="ticket" name="ticket" type="number" min="0" step="0.01" inputmode="decimal" value="120" aria-describedby="ticket-help">
+        <p class="help" id="ticket-help">Introduce el precio total del billete que quieres revisar.</p>
+      </div>
+      <div class="field">
+        <label for="delay">Retraso de llegada (minutos)</label>
+        <input id="delay" name="delay" type="number" min="0" step="1" inputmode="numeric" value="90" aria-describedby="delay-help">
+        <p class="help" id="delay-help">Cuenta el retraso en la llegada al destino final indicado en el billete.</p>
+      </div>
+      <fieldset>
+        <legend>Comprobaciones rápidas</legend>
+        <label class="check" for="covered"><input id="covered" type="checkbox" checked> Trayecto/operador dentro del alcance UE orientativo</label>
+        <label class="check" for="exceptional"><input id="exceptional" type="checkbox"> Posibles circunstancias excepcionales o norma local aplicable</label>
+      </fieldset>
+      <button id="calculate" type="button">Calcular estimación</button>
     </section>
-    <section class="card result" id="result" aria-live="polite"></section>
-    <section class="card warning">
-      <h2>Límites</h2>
+
+    <section class="card result" aria-labelledby="result-title">
+      <h2 id="result-title">Resultado</h2>
+      <div id="result" aria-live="polite" aria-atomic="true"></div>
+      <label for="draft">Borrador editable</label>
+      <textarea id="draft" rows="8" readonly aria-describedby="draft-help"></textarea>
+      <p class="help" id="draft-help">Revisa y adapta este texto con datos reales sólo fuera de esta herramienta y siguiendo el procedimiento oficial del operador.</p>
+    </section>
+
+    <section class="card faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Preguntas frecuentes</h2>
+      <details open>
+        <summary>Qué porcentajes usa la calculadora?</summary>
+        <p>Usa 25% para retrasos de 60 a 119 minutos y 50% para retrasos desde 120 minutos, como punto de partida educativo sujeto a verificación oficial.</p>
+      </details>
+      <details>
+        <summary>La estimación garantiza el pago?</summary>
+        <p>No. El operador puede aplicar condiciones, exenciones, plazos y comprobaciones. Verifica siempre las fuentes oficiales y conserva documentación del viaje.</p>
+      </details>
+      <details>
+        <summary>La página almacena o envía datos?</summary>
+        <p>No. Funciona localmente en el navegador, sin registro, analítica ni recursos externos en este paquete.</p>
+      </details>
+    </section>
+
+    <section class="card warning" aria-labelledby="limits-title">
+      <h2 id="limits-title">Límites importantes</h2>
       <ul>
-        <li>Verifica siempre fuente oficial, operador, exenciones, plazo y documentación.</li>
-        <li>El resultado es orientativo y no garantiza compensación.</li>
-        <li>Consulta siempre las condiciones y el procedimiento del operador.</li>
+        <li>Herramienta educativa: no es asesoría legal ni representa al operador.</li>
+        <li>No publica, no cobra, no contacta terceros y no envía reclamaciones.</li>
+        <li>Comprueba siempre fuente oficial, operador, exenciones, plazo y documentación.</li>
       </ul>
     </section>
   </main>
