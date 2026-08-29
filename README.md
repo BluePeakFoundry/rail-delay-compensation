@@ -7,7 +7,7 @@ Static, privacy-preserving calculator for preparing an educational estimate of m
 - Estimates 25% of the ticket price for arrival delays from 60 to 119 minutes.
 - Estimates 50% for arrival delays of 120 minutes or more.
 - Generates local JSON, Markdown and browser draft text for review.
-- Runs as a static page with no registration, analytics, storage or remote runtime resources.
+- Runs as a static page with no registration, no storage, no cookies, and privacy-friendly aggregate analytics for visits and events.
 
 ## What it does not do
 

@@ -18,7 +18,7 @@ REMOTE_RUNTIME_PATTERNS = [
     r'url\(["\']https?://',
 ]
 REQUIRED = [
-    "index.html", "app.js", "style.css", "README.md", "robots.txt", "sitemap.xml",
+    "index.html", "app.js", "analytics.js", "style.css", "README.md", "robots.txt", "sitemap.xml",
     "rail_core.py", "claim_pack.py", "test_rail_core.py", "validate_pack.py",
 ]
 
@@ -57,8 +57,9 @@ all_public_text = "\n".join([html, css, js, readme, robots, sitemap]).lower()
 for term in FORBIDDEN_INTERNAL:
     if term in all_public_text:
         raise SystemExit(f"forbidden internal term in public files: {term}")
+remote_runtime_text = re.sub(r"<script[^>]+src=['\"]https://gc\.zgo\.at/count\.js['\"][^>]*></script>", "", html, flags=re.I)
 for pattern in REMOTE_RUNTIME_PATTERNS:
-    if re.search(pattern, html + "\n" + css, flags=re.I):
+    if re.search(pattern, remote_runtime_text + "\n" + css, flags=re.I):
         raise SystemExit(f"remote runtime resource detected: {pattern}")
 checks = {
     "canonical": f'<link rel="canonical" href="{PUBLIC_URL}">' in html,
@@ -71,6 +72,7 @@ checks = {
     "live_region": 'aria-live="polite"' in html and 'aria-atomic="true"' in html,
     "faq_visible": '<section class="card faq"' in html and '<details' in html,
     "privacy": "Sin registro" in html and "Sin almacenamiento" in html and "analytics" in readme.lower(),
+    "analytics": "bluepeakfoundry.goatcounter.com/count" in html and "analytics.js" in html and "data-analytics-event" in html,
     "draft": 'id="draft"' in html and 'draftText' in js,
     "robots": "User-agent: *" in robots and PUBLIC_URL + "sitemap.xml" in robots,
     "sitemap": PUBLIC_URL in sitemap,

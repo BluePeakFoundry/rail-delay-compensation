@@ -52,6 +52,7 @@ function calculate() {
   const pct = Math.round(rate * 100);
   const message = `<p><strong>Retraso:</strong> ${delay} min · <strong>Tasa mínima orientativa:</strong> ${pct}% · <strong>Estimación:</strong> ${euro(amount)}.</p><p>La cifra no garantiza aceptación ni pago. Comprueba siempre el procedimiento del operador.</p>`;
   setResult(message, draftText(ticket, delay, rate, amount));
+  if (window.BluePeakAnalytics) window.BluePeakAnalytics.track('conversion:rail:calculation-complete', 'Rail calculation complete');
 }
 
 document.getElementById('calculate').addEventListener('click', calculate);
@@ -60,3 +61,18 @@ for (const id of ['ticket', 'delay', 'covered', 'exceptional']) {
   document.getElementById(id).addEventListener('change', calculate);
 }
 calculate();
+
+
+function downloadRailDraft() {
+  const text = document.getElementById('draft').value || '';
+  const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'rail-delay-compensation-draft.txt';
+  link.click();
+  URL.revokeObjectURL(url);
+  if (window.BluePeakAnalytics) window.BluePeakAnalytics.track('conversion:rail:download-draft', 'Rail draft downloaded');
+}
+
+document.getElementById('download-draft').addEventListener('click', downloadRailDraft);

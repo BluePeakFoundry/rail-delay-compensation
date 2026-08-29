@@ -43,6 +43,8 @@
     ]
   }
   </script>
+  <script data-goatcounter="https://bluepeakfoundry.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <script defer src="analytics.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#calculator">Saltar a la calculadora</a>
@@ -71,7 +73,7 @@
         <label class="check" for="covered"><input id="covered" type="checkbox" checked> Trayecto/operador dentro del alcance UE orientativo</label>
         <label class="check" for="exceptional"><input id="exceptional" type="checkbox"> Posibles circunstancias excepcionales o norma local aplicable</label>
       </fieldset>
-      <button id="calculate" type="button">Calcular estimación</button>
+      <button id="calculate" type="button" data-analytics-event="cta:rail:calculate" data-analytics-title="Rail calculation CTA">Calcular estimación</button>
     </section>
 
     <section class="card result" aria-labelledby="result-title">
@@ -79,6 +81,7 @@
       <div id="result" aria-live="polite" aria-atomic="true"></div>
       <label for="draft">Borrador editable</label>
       <textarea id="draft" rows="8" readonly aria-describedby="draft-help"></textarea>
+      <button id="download-draft" type="button" class="secondary" data-analytics-event="download:rail:draft-text" data-analytics-title="Rail draft text download">Descargar borrador .txt</button>
       <p class="help" id="draft-help">Revisa y adapta este texto con datos reales sólo fuera de esta herramienta y siguiendo el procedimiento oficial del operador.</p>
     </section>
 
@@ -105,7 +108,7 @@
         <li>No publica, no cobra, no contacta terceros y no envía reclamaciones.</li>
         <li>Comprueba siempre fuente oficial, operador, exenciones, plazo y documentación.</li>
       </ul>
-      <p><a class="tools-link" href="https://bluepeakfoundry.github.io/consumer-rights-tools/">Ver más herramientas de derechos de consumo de la UE</a></p>
+      <p><a class="tools-link" href="https://bluepeakfoundry.github.io/consumer-rights-tools/" data-analytics-event="outbound:rail:consumer-rights-tools" data-analytics-title="Rail outbound to tools index">Ver más herramientas de derechos de consumo de la UE</a></p>
     </section>
   </main>
   <script src="app.js"></script>
